@@ -3,11 +3,12 @@ import React, { useState } from "react";
 function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const apiBase = process.env.REACT_APP_API_URL;
 
   const handleSignup = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("http://localhost:5000/register", {
+    const res = await fetch(`${apiBase}/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),

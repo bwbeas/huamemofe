@@ -5,7 +5,7 @@ const Dashboard = () => {
   const [entries, setEntries] = useState([]);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const apiBase = import.meta.env.VITE_API_URL;
+  const apiBase = process.env.REACT_APP_API_URL;
   
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -14,7 +14,7 @@ const Dashboard = () => {
       return;
     }
 
-    fetch("${apiBase}/entries", {
+    fetch(`${apiBase}/entries`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -36,7 +36,7 @@ const Dashboard = () => {
     const token = localStorage.getItem("token");
 
     try {
-      const res = await fetch("${apiBase}/entries", {
+      const res = await fetch(`${apiBase}/entries`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

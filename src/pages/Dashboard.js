@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 
+
 const Dashboard = () => {
   const [entries, setEntries] = useState([]);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-
+  const apiBase = import.meta.env.VITE_API_URL;
   
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -13,7 +14,7 @@ const Dashboard = () => {
       return;
     }
 
-    fetch("http://localhost:5000/entries", {
+    fetch("${apiBase}/entries", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -35,7 +36,7 @@ const Dashboard = () => {
     const token = localStorage.getItem("token");
 
     try {
-      const res = await fetch("http://localhost:5000/entries", {
+      const res = await fetch("${apiBase}/entries", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -60,7 +61,7 @@ const Dashboard = () => {
     const token = localStorage.getItem("token");
 
     try {
-      const res = await fetch(`http://localhost:5000/entries/${id}`, {
+      const res = await fetch(`${apiBase}/entries/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

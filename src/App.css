@@ -2,37 +2,340 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Import a cozy, readable font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+  /* Simplified dark color palette */
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #404040;
+  --accent-pink: #d1626a;
+  --accent-yellow: #f4c430;
+  --text-primary: #f5f5f5;
+  --text-secondary: #cccccc;
+  --text-muted: #999999;
+  --border: #444444;
+  --danger: #e74c3c;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-header {
-  background-color: #282c34;
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+#root {
   min-height: 100vh;
+  background-color: var(--bg-primary);
+}
+
+/* ======================
+   HOME PAGE STYLES
+====================== */
+.home-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  min-height: 100vh;
+  padding: 2rem;
+  text-align: center;
+}
+
+.home-container h1 {
+  font-family: 'Crimson Text', serif;
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.home-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* ======================
+   BUTTON STYLES
+====================== */
+button {
+  background-color: var(--accent-pink);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
   color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 0.95rem;
 }
 
-.App-link {
-  color: #61dafb;
+button:hover {
+  background-color: #c5565e;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+button:active {
+  background-color: #b84c54;
+}
+
+.logout-btn {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  float: right;
+  margin-bottom: 1rem;
+}
+
+.logout-btn:hover {
+  background-color: var(--bg-secondary);
+}
+
+.delete-btn {
+  background-color: var(--danger);
+  color: white;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  border-radius: 4px;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+}
+
+/* ======================
+   FORM STYLES
+====================== */
+form {
+  background-color: var(--bg-secondary);
+  padding: 2rem;
+  border-radius: 8px;
+  margin: 2rem auto;
+  max-width: 500px;
+  border: 1px solid var(--border);
+}
+
+.auth-form {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.auth-form h2 {
+  font-family: 'Crimson Text', serif;
+  font-size: 2rem;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px 16px;
+  margin: 0.5rem 0;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  transition: border-color 0.2s ease;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent-pink);
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+  font-family: 'Crimson Text', serif;
+  line-height: 1.6;
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--text-muted);
+}
+
+/* ======================
+   DASHBOARD STYLES
+====================== */
+.dashboard-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+.dashboard-container h1 {
+  font-family: 'Crimson Text', serif;
+  font-size: 2.5rem;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.dashboard-container h2 {
+  font-family: 'Crimson Text', serif;
+  font-size: 1.6rem;
+  color: var(--text-primary);
+  margin: 2rem 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--accent-pink);
+}
+
+/* ======================
+   ENTRY STYLES
+====================== */
+.entries-container {
+  margin-top: 2rem;
+}
+
+.entry {
+  background-color: var(--bg-secondary);
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 3px solid var(--accent-pink);
+  transition: background-color 0.2s ease;
+}
+
+.entry:hover {
+  background-color: #353535;
+}
+
+.entry h3 {
+  font-family: 'Crimson Text', serif;
+  font-size: 1.3rem;
+  color: var(--text-primary);
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+
+.entry p {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  white-space: pre-wrap;
+}
+
+.entry small {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  display: block;
+  margin-bottom: 0.5rem;
+  background-color: var(--bg-tertiary);
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+/* Remove default ul styling */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* ======================
+   RESPONSIVE DESIGN
+====================== */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 1rem;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .home-container h1 {
+    font-size: 2.2rem;
   }
+  
+  .home-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  form {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .entry {
+    margin: 1rem 0;
+    padding: 1rem;
+  }
+  
+  .logout-btn {
+    float: none;
+    display: block;
+    margin: 0 auto 1rem auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-container h1 {
+    font-size: 1.8rem;
+  }
+  
+  .dashboard-container h1 {
+    font-size: 2rem;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ======================
+   FOCUS STATES FOR ACCESSIBILITY
+====================== */
+button:focus {
+  outline: 2px solid var(--accent-yellow);
+  outline-offset: 2px;
+}
+
+/* ======================
+   FOOTER STYLES
+====================== */
+.footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  border-top: 1px solid var(--border);
+  margin-top: 2rem;
+}
+
+.footer p {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ======================
+   SCROLLBAR STYLING
+====================== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-pink);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c5565e;
 }

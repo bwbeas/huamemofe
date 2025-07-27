@@ -5,6 +5,7 @@
 
 # HUAMEMO : 🦋an everyday memobook for you🦋
 Huamemo is a simple and beautiful personal memo book, like a digital diary, where users can securely sign up, log in, and manage their private notes. Whether it's your daily thoughts, reminders, or secrets, Huamemo helps you keep them organized and accessible.
+
 <img width="600" height="400" alt="image" src="https://github.com/user-attachments/assets/070666df-269b-4b51-a727-535f5d1f0c4e" />
 
 ---
